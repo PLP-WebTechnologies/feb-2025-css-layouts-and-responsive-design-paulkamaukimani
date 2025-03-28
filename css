@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Layout with Flexbox</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">My Awesome Site</div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Welcome!</h1>
+            <p>This is a responsive website built with Flexbox and media queries.</p>
+            <button>Learn More</button>
+        </section>
+
+        <section class="content">
+            <div class="content-item">
+                <h2>Content Item 1</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="content-item">
+                <h2>Content Item 2</h2>
+                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            <div class="content-item">
+                <h2>Content Item 3</h2>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </div>
+        </section>
+
+        <aside class="sidebar">
+            <h3>Sidebar</h3>
+            <p>This is a sidebar.  It can contain ads, related links, or other content.</p>
+        </aside>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Awesome Site</p>
+    </footer>
+
+</body>
+</html>
+CSS (style.css):
+
+/* General Styles */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Important for padding and border calculation */
+}
+
+/* Header and Navigation */
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+}
+
+nav {
+    display: flex; /* Use Flexbox for the navigation bar */
+    justify-content: space-between; /* Distribute space between logo and links */
+    align-items: center; /* Vertically align items */
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* Use Flexbox for the navigation links */
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Main Content */
+main {
+    display: flex; /* Use Flexbox for the main layout */
+    padding: 20px;
+    flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+}
+
+.hero {
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+    flex: 1 1 100%; /* Full width by default */
+}
+
+.content {
+    display: flex; /* Use Flexbox for content items */
+    flex-wrap: wrap; /* Allow content items to wrap */
+    justify-content: space-around; /* Distribute items evenly */
+    flex: 3 1 70%; /* Takes up 70% of the main area */
+}
+
+.content-item {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px; /* Add spacing between content items */
+    width: 30%; /* Adjust width based on screen size */
+}
+
+.sidebar {
+    background-color: #eee;
+    padding: 20px;
+    flex: 1 1 25%; /* Takes up 25% of the main area */
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+
+/* Media Queries for Responsive Design */
+
+/* For tablets (768px and up) */
+@media (min-width: 768px) {
+    .content-item {
+        width: 45%; /* Two content items per row on tablets */
+    }
+}
+
+
+/* For desktops (992px and up) */
+@media (min-width: 992px) {
+    main {
+        flex-wrap: nowrap; /* Prevent wrapping on desktop */
+    }
+
+    .hero {
+        flex: 1 1 30%; /* Takes up 30% of the main area */
+        text-align: left;
+    }
+
+    .content {
+        flex: 2 1 60%; /* Takes up 60% of the main area */
+    }
+
+    .sidebar {
+        flex: 1 1 20%; /* Takes up 20% of the main area */
+    }
+
+    .content-item {
+        width: 30%; /* Three content items per row on desktops */
+    }
+}
+
+/* For larger desktops (1200px and up - optional) */
+@media (min-width: 1200px) {
+    nav {
+        padding: 0 50px;  /* Wider padding on large screens */
+    }
+}
