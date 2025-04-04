@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">My Hackathon Projects</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>
+                Hi, I'm [Your Name], a passionate developer who loves participating in hackathons. This portfolio showcases some of the projects I've built during these events, highlighting my skills in [List your skills, e.g.,  web development, mobile development, data science, machine learning]. I enjoy collaborating with others and tackling challenging problems in a fast-paced environment.
+            </p>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="project-grid">
+                <div class="project-card" data-project-id="project1">
+                    <img src="placeholder-image.jpg" alt="Project 1 Image">
+                    <h3>Project Title 1</h3>
+                    <p>Short description of project 1.</p>
+                    <a href="#" class="view-details-button">View Details</a>
+                </div>
+
+                <div class="project-card" data-project-id="project2">
+                    <img src="placeholder-image.jpg" alt="Project 2 Image">
+                    <h3>Project Title 2</h3>
+                    <p>Short description of project 2.</p>
+                    <a href="#" class="view-details-button">View Details</a>
+                </div>
+
+                <div class="project-card" data-project-id="project3">
+                    <img src="placeholder-image.jpg" alt="Project 3 Image">
+                    <h3>Project Title 3</h3>
+                    <p>Short description of project 3.</p>
+                    <a href="#" class="view-details-button">View Details</a>
+                </div>
+
+                <!-- Add more project cards here -->
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <p>Feel free to reach out!</p>
+            <form id="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit">Send</button>
+                <p id="form-message"></p> <!-- For displaying success or error messages -->
+            </form>
+
+            <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 [Your Name]. All rights reserved.</p>
+    </footer>
+
+    <!-- Project Details Modal (Hidden by default) -->
+    <div id="project-details-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="modal-title"></h2>
+            <div id="modal-description"></div>
+            <img id="modal-image" src="" alt="Project Image">
+            <p><strong>Technologies Used:</strong> <span id="modal-tech"></span></p>
+            <a id="modal-github-link" href="#" target="_blank">View on GitHub</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+/* style.css */
+
+/* General Styles */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 50px 0;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* Header & Navigation */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 15px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #555;
+}
+
+/* Projects Section */
+#projects .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px; /* Adjust as needed */
+    object-fit: cover;
+}
+
+.project-card h3 {
+    padding: 15px;
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.project-card p {
+    padding: 0 15px 15px;
+    color: #666;
+}
+
+.view-details-button {
+    display: block;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 15px;
+}
+
+.view-details-button:hover {
+    background-color: #555;
+}
+
+
+/* Contact Section */
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#contact-form label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#contact-form input,
+#contact-form textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+#contact-form textarea {
+    resize: vertical;
+}
+
+#contact-form button {
+    background-color: #333;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+#contact-form button:hover {
+    background-color: #555;
+}
+
+#form-message {
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.social-links {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: inline-block;
+    margin: 0 10px;
+    color: #333;
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #0077B5; /* LinkedIn Blue, change as needed */
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 800px; /* Limit width for larger screens */
+    position: relative; /* For absolute positioning of the close button */
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#modal-image {
+    width: 100%;
+    max-height: 300px; /* Adjust as needed */
+    object-fit: contain; /* Ensures the image is fully visible */
+    margin-bottom: 10px;
+}
+
+#modal-description {
+    margin-bottom: 15px;
+}
+
+/* Media Queries for Responsiveness */
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        margin-top: 10px;
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    #projects .project-grid {
+        grid-template-columns: 1fr; /* Single column on smaller screens */
+    }
+}
+// script.js
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    // Project Data (Replace with your actual project details)
+    const projectsData = {
+        project1: {
+            title: "AI Powered Chatbot",
+            description: "A chatbot built during HackUMass XIV using NLP techniques to provide personalized responses.",
+            image: "placeholder-image.jpg",
+            technologies: "Python, TensorFlow, Natural Language Processing",
+            githubLink: "https://github.com/your-username/project1"
+        },
+        project2: {
+            title: "Mobile Health App",
+            description: "A mobile application developed during MHacks for tracking user fitness and providing health recommendations.",
+            image: "placeholder-image.jpg",
+            technologies: "React Native, Firebase",
+            githubLink: "https://github.com/your-username/project2"
+        },
+        project3: {
+            title: "Data Visualization Dashboard",
+            description: "A dashboard created for a hackathon visualizing real-time data from a weather API.",
+            image: "placeholder-image.jpg",
+            technologies: "JavaScript, D3.js, HTML, CSS",
+            githubLink: "https://github.com/your-username/project3"
+        },
+        // Add more project data as needed
+    };
+
+    // Get all elements we'll need
+    const projectCards = document.querySelectorAll('.project-card');
+    const modal = document.getElementById('project-details-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDescription = document.getElementById('modal-description');
+    const modalImage = document.getElementById('modal-image');
+    const modalTech = document.getElementById('modal-tech');
+    const modalGithubLink = document.getElementById('modal-github-link');
+    const closeButton = document.querySelector('.close-button');
+    const contactForm = document.getElementById('contact-form');
+    const formMessage = document.getElementById('form-message');
+
+
+
+    // --- Project Modal Functionality ---
+    projectCards.forEach(card => {
+        card.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+
+            const projectId = card.dataset.projectId;
+            const project = projectsData[projectId];
+
+            if (project) {
+                modalTitle.textContent = project.title;
+                modalDescription.textContent = project.description;
+                modalImage.src = project.image;
+                modalTech.textContent = project.technologies;
+                modalGithubLink.href = project.githubLink;
+
+                modal.style.display = "block";
+            } else {
+                console.error(`Project data not found for project ID: ${projectId}`);
+                alert("Project details not available."); // Or handle the error more gracefully
+            }
+        });
+    });
+
+    closeButton.addEventListener('click', function() {
+        modal.style.display = "none";
+    });
+
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+
+
+
+    // --- Contact Form Submission ---
+    if (contactForm) { // Check if the contact form exists
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Basic form validation (you can add more robust validation)
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (!name || !email || !message) {
+                formMessage.textContent = "Please fill out all fields.";
+                formMessage.style.color = "red";
+                return;
+            }
+
+            // Simulate form submission (replace with actual API call)
+            setTimeout(() => {
+                formMessage.textContent = "Message sent successfully!";
+                formMessage.style.color = "green";
+                contactForm.reset(); // Clear the form
+            }, 1000); // Simulate a 1-second delay
+        });
+    }
+});
